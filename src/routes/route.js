@@ -36,3 +36,104 @@ router.get('/student-details/:name', function(req, res){
 })
 
 module.exports = router;
+
+
+//=================================ASSIGNMENT 1 ======================================================//
+
+router.get("/movies", (req, res) => {
+
+    const movieName = ["Rang de basanti", "The shining", "Lord of the ring", "Batman begins", "Bahubali", "Spiderman", "Nambi Effect"]
+
+    res.send(movieName)
+
+})
+
+//==============================ASSIGNMENT 2 AND 3 ==========================================================//
+
+router.get("/movies/:indexNumber", (req, res) => {
+
+    const movieName = ["Rang de basanti", "The shining", "Lord of the ring", "Batman begins", "Bahubali", "Spiderman", "Nambi Effect"]
+    let ind = req.params // ind = { indexNumber : 3}
+    let indexOfMovie = + (ind.indexNumber)
+    
+    console.log(ind)
+
+    console.log(typeof indexOfMovie)
+    
+    if(!indexOfMovie){
+           res.send("Please provide indexNumber")
+     }
+    else if(indexOfMovie < 0 || indexOfMovie > movieName.length) {
+        res.send("please insert valid index")
+    }
+    else{
+        res.send(movieName[indexOfMovie])
+    }
+
+})
+
+//====================================Assignment 4 ============================================================//
+
+
+router.get("/films", (req, res) => {
+
+    const movieData =[
+        {
+            id : 1,
+            name:"The Shining"
+        },
+        {
+            id : 2,
+            name:"Incendies"
+        },
+        {
+            id : 3,
+            name:"Rang de Basanti"
+        },
+        {
+            id : 4,
+            name:"Finding Nemo"
+        }
+    ]
+
+    res.send(movieData)
+
+})
+
+//========================================Assignment 5==========================================================//
+
+router.get("/films/:filmId", (req, res) => {
+
+    const movieData =[
+        {
+            id : 1,
+            name:"The Shining"
+        },
+        {
+            id : 2,
+            name:"Incendies"
+        },
+        {
+            id : 3,
+            name:"Rang de Basanti"
+        },
+        {
+            id : 4,
+            name:"Finding Nemo"
+        }
+    ]
+
+    const filmNameWithId =  +(req.params.filmId)
+
+    if(!filmNameWithId){
+        res.send("please provide filmId")
+    }
+    for(let i=0;i<movieData.length;i++){
+        if(movieData[i].id === filmNameWithId){
+            res.send(movieData[i])
+        }
+    }
+
+    res.send("No movie present with this id")
+
+})
