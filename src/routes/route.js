@@ -106,8 +106,17 @@ let players =
 
        //LOGIC WILL COME HERE
        let Lp = req.body
-       players.push(Lp)
-       res.send(  { data: players , status: true }  )
+       let lpname = req.body.name
+       for (let  i = 0;  i < players.length;  i++) {
+         ele = players[i].name
+        if (ele === lpname){
+            res.send("this player is alredy exist")
+            break
+        } else if(ele !== req.body.name){
+            players.push(Lp)
+            res.send(  { data: players , status: true }  )
+        }
+    }
    })
 
 
