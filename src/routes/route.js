@@ -120,4 +120,23 @@ let players =
    })
 
 
+   
+   function voters(params) {
+    const result = [];
+    for (let i = 0; i < params.length; i++) {
+    const person = params[i];
+    if (person.age >= 18) {
+        person.votingStatus = true
+    result.push(person);
+    }
+    }
+    return result;
+    }
+    
+    // console.log(voters(persons))
+
+
+
+
+
 module.exports = router;
