@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema( {
+const userSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
     mobile: {
@@ -29,3 +29,24 @@ module.exports = mongoose.model('User', userSchema) //users
 
 // String, Number
 // Boolean, Object/json, array
+
+const bookschema = new mongoose.Schema({
+
+    bookname: {
+        type: String,
+        require: true,
+    },
+    auther:
+    {
+        type: String,
+        require: true,
+    },
+    category: String,
+    year: Number,
+    language: {
+        type: String,
+        enum: ["English", "Hindi", "Telgu", "Tamil"]
+    },
+}, { timestamps: true });
+
+module.exports = mongoose.model('user' , bookschema)
