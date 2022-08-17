@@ -20,13 +20,12 @@ const sepyear = async function (req, res) {
 
 
 const sepycrt = async function (req, res) {
-    let data = req.body
-    let savedata = await bookModel.find({ data })
+    let savedata = await bookModel.find(req.body)
     res.send({ sms: savedata })
 }
 
 const selectSome = async function (req, res) {
-    let savedata = await bookModel.find({indianPrice: {$in: ["700rs" , "500rs", "550rs"] } })
+    let savedata = await bookModel.find({"prices.indianPrice": {$in: ["700rs" , "500rs", "550rs"] } })
     res.send({ sms: savedata })
 }
 module.exports.creatbook = creatbook;
