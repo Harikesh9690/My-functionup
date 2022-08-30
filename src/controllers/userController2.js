@@ -32,14 +32,6 @@ const loginUser = async function (req, res) {
 };
 
 const getUserData = async function (req, res) {
-  let token = req.headers["x-auth-token"];
-  if (!token) return res.send({ status: false, msg: "token must be present" });
-
-  console.log(token);
-  let decodedToken = jwt.verify(token, "functionup-plutonium-very-very-secret-key");
-  if (!decodedToken)
-    return res.send({ status: false, msg: "token is invalid" });
-
   let userId = req.params.userId;
   let userDetails = await userModel.findById(userId);
   if (!userDetails)
@@ -60,7 +52,17 @@ const updateUser = async function (req, res) {
   res.send({ status: updatedUser, data: updatedUser });
 };
 
+const deleteuser = async function (req, res) {
+  let userId = req.params.userId
+  if (req.pass.userId == userId) {
+    let userDetails = await userModel.findByIdAndUpdate({ _id: userId }, { $set: { isdeleted: true } })
+    res.send({ status: true, msg: "deleted successfully" })
+  } else {
+    res.send({ status: false, msg: "you are not authorised for this opretion" })
+  }
+}
 module.exports.createUser = createUser;
 module.exports.getUserData = getUserData;
 module.exports.updateUser = updateUser;
 module.exports.loginUser = loginUser;
+module.exports.deleteuser = deleteuser;
