@@ -1,5 +1,4 @@
-# Project3-BookManagement
-
+Project - Books Management
 Key points
 Create a group database groupXDatabase. You can clean the db you previously used and resue that.
 This time each group should have a single git branch. Coordinate amongst yourselves by ensuring every next person pulls the code last pushed by a team mate. You branch will be checked as part of the demo. Branch name should follow the naming convention project/booksManagementGroupX
@@ -27,7 +26,7 @@ Books Model
   userId: {ObjectId, mandatory, refs to user model},
   ISBN: {string, mandatory, unique},
   category: {string, mandatory},
-  subcategory: [string, mandatory],
+  subcategory: {string, mandatory},
   reviews: {number, default: 0, comment: Holds number of reviews of this book},
   deletedAt: {Date, when the document is deleted}, 
   isDeleted: {boolean, default: false},
@@ -207,7 +206,7 @@ Book details response
     "excerpt": "book body",
     "userId": ObjectId("88abc190ef0288abc190ef02")
     "category": "Book",
-    "subcategory": ["Non fiction", "Self Help"],
+    "subcategory": "Non fiction",
     "isDeleted": false,
     "reviews": 4,
     "releasedAt": "2021-09-17T04:25:07.803Z"
@@ -259,7 +258,7 @@ Book details response no reviews
     "excerpt": "book body",
     "userId": ObjectId("88abc190ef0288abc190ef02")
     "category": "Book",
-    "subcategory": "Non fiction", "Self Help"],
+    "subcategory": "Non fiction",
     "isDeleted": false,
     "reviews": 0,
     "releasedAt": "2021-09-17"
